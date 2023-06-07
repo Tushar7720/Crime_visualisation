@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Comparison</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .dropdown {
+            width: 200px;
+            margin: 50px auto;
+        }
+
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: maroon;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            width: 45%;
+            margin: 10px;
+        }
+
+        .caption {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <select id="imageSelector" onchange="showImage()">
+            <option value="">Select an option</option>
+            <option value="crime-women">Crime against Women Comparison</option>
+            <option value="crime-children">Crimes against Children Comparison</option>
+            <option value="ipc-crimes">IPC Crimes Comparison</option>
+            <option value="sll-crimes">SLL Crimes Comparison</option>
+        </select>
+    </div>
+
+    <div id="imageContainer" style="display: none;">
+        <div class="image-container">
+            <img id="image1" src="" alt="Image 1">
+            <img id="image2" src="" alt="Image 2">
+        </div>
+        <div class="caption" id="caption"></div>
+    </div>
+
+    <script>
+        function showImage() {
+            var imageSelector = document.getElementById("imageSelector");
+            var selectedValue = imageSelector.options[imageSelector.selectedIndex].value;
+
+            var image1 = document.getElementById("image1");
+            var image2 = document.getElementById("image2");
+            var caption = document.getElementById("caption");
+
+            if (selectedValue === "crime-women") {
+                image1.src = "static/images/charts/comparison chart/1.png";
+                image2.src = "static/images/charts/comparison chart/2.png";
+                caption.innerHTML = "These are the graphs of dowry deaths and Kidnapping and abduction against women, plotted to compare between UP and Bihar";
+            } else if (selectedValue === "crime-children") {
+                image1.src = "static/images/charts/comparison chart/3.png";
+                image2.src = "static/images/charts/comparison chart/4.png";
+                caption.innerHTML = "Crimes against Children Comparison";
+            } else if (selectedValue === "ipc-crimes") {
+                image1.src = "static/images/charts/comparison chart/5.png";
+                image2.src = "static/images/charts/comparison chart/6.png";
+                caption.innerHTML = "IPC Crimes Comparison";
+            } else if (selectedValue === "sll-crimes") {
+                image1.src = "static/images/charts/comparison chart/7.png";
+                image2.src = "static/images/charts/comparison chart/8.jpeg";
+                caption.innerHTML = "SLL Crimes Comparison";
+            } else {
+                image1.src = "";
+                image2.src = "";
+                caption.innerHTML = "";
+            }
+
+            if (selectedValue !== "") {
+                document.getElementById("imageContainer").style.display = "block";
+            } else {
+                document.getElementById("imageContainer").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
